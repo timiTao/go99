@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  hello-world:
+    build: .
+    volumes:
+      - ${PWD}/logs:/app/logs
+      - ${PWD}/HelloWorld:/go/src/app
+    command: ["run.sh"]
+
