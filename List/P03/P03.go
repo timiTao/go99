@@ -1,6 +1,6 @@
 package P03
 
-/* P03 (*) Find the K'th element of a list. */
+/* P03. Find the K'th element of a list. */
 func elementAt(myList []int, key int) (int, bool) {
 	if key <= 0 {
 		return 0, false
