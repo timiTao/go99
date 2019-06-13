@@ -8,3 +8,10 @@ services:
       - ${PWD}/HelloWorld:/go/src/app
     command: ["run.sh"]
 
+  list:
+    build: .
+    volumes:
+      - ${PWD}/logs:/app/logs
+      - ${PWD}/List:/go/src/app
+    command: ["run.sh"]
+
