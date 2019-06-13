@@ -1,4 +1,4 @@
-package main
+package P01
 
 /* P01. Find the last element of a list. */
 func lastElement(s []int) (int, bool)  {

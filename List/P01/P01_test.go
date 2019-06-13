@@ -1,4 +1,4 @@
-package main
+package P01
 
 import "testing"
 
@@ -15,7 +15,7 @@ func TestLastElementOnEmpty(t *testing.T) {
 	tempList := []int{}
 	last, correct := lastElement(tempList)
 
-	if correct != false {
-		t.Errorf("Expected %d, founded %d", 13, last)
+	if last != 0 || correct != false {
+		t.Errorf("Expected found incorrect status")
 	}
 }
