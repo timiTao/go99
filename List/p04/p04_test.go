@@ -1,4 +1,4 @@
-package P04
+package p04
 
 import "testing"
 
