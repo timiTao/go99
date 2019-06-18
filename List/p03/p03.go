@@ -5,7 +5,7 @@ func elementAt(myList []int, key int) (int, bool) {
 	if key <= 0 {
 		return 0, false
 	}
-	if (key >= len(myList)) {
+	if key >= len(myList) {
 		return 0, false
 	}
 
