@@ -1,4 +1,12 @@
-### [S-99: Ninety-Nine Goland Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
+[![Go Report Card][go-report-image]][go-report-url]
+[![coverage][coverage-image]][coverage-url]
+
+[go-report-image]: https://goreportcard.com/badge/github.com/timiTao/go99
+[go-report-url]: https://goreportcard.com/report/github.com/timiTao/go99
+[coverage-image]: https://coveralls.io/repos/github/timiTao/go99/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/timiTao/go99?branch=master
+
+### [S-99: Ninety-Nine Prolog Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
 
 This is my first attempt with [GO](https://golang.org/).
 
