@@ -12,14 +12,8 @@ func (e *Element) HasNext() bool {
 }
 
 func (e *Element) Last() (*Element, bool) {
-	if e.HasNext() == false {
-		return e, true;
+	if e.HasNext() {
+		return e.next.Last()
 	}
-
-	for item := e; true; item = item.next {
-		if item.HasNext() == false {
-			return item, true
-		}
-	}
-	return nil, false
+	return e, true
 }

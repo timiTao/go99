@@ -20,14 +20,13 @@ func (e *Element) IsLastButOne() bool {
 }
 
 func (e *Element) LastButOne() (*Element, bool) {
-	if e.HasNext() == false {
-		return nil, false;
+	if !e.HasNext() {
+		return nil, false
 	}
 
-	for item := e; true; item = item.next {
-		if item.IsLastButOne() {
-			return item, true
-		}
+	if e.HasNext() && !e.next.HasNext() {
+		return e, true
 	}
-	return nil, false
+
+	return e.next.LastButOne()
 }
