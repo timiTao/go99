@@ -2,20 +2,20 @@ package p01
 
 import "testing"
 
-func TestLastElement(t *testing.T) {
-	tempList := []int{2, 3, 5, 7, 11, 13}
-	last, correct := lastElement(tempList)
+func TestLastElementEmpty(t *testing.T) {
+	element := Element{value: "test"}
+	last, correct := element.Last()
 
-	if last != 13 && correct == true {
-		t.Errorf("Expected %d, founded %d", 13, last)
+	if correct != true || last.value != "test" {
+		t.Errorf("Expected %s, founded %s", "test", last.value)
 	}
 }
 
-func TestLastElementOnEmpty(t *testing.T) {
-	tempList := []int{}
-	last, correct := lastElement(tempList)
+func TestLastElementList(t *testing.T) {
+	element := Element{value: "test", next: &Element{value: "test2"}}
+	last, correct := element.Last()
 
-	if last != 0 || correct != false {
-		t.Errorf("Expected found incorrect status")
+	if correct != true || last.value != "test2" {
+		t.Errorf("Expected %s, founded %s", "test2", last.value)
 	}
 }

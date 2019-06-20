@@ -23,3 +23,4 @@ This is my first attempt with [GO](https://golang.org/).
 
 * [Kanishk Dudeja, The beauty of Go](https://hackernoon.com/the-beauty-of-go-98057e3f0a7d)
 * [Rajeev Singh, Building Docker Containers for Go Applications](https://www.callicoder.com/docker-golang-image-container-example/)
+* [Why Learning Is A New Procrastination](https://medium.com/the-coffeelicious/why-learning-is-a-new-procrastination-104b53107e8b) -  why I start from scratch and this will be be bad code.
