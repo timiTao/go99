@@ -2,22 +2,32 @@ package p03
 
 import "testing"
 
-func TestElementAt(t *testing.T) {
-	tempList := []int{2, 3, 5, 7, 11, 13}
+func TestElementAtOnEmpty(t *testing.T) {
+	element := Element{value: "test"}
 
-	last, correct := elementAt(tempList, 3)
+	current := element.ElementAt(3)
 
-	if last != 5 || correct != true {
-		t.Errorf("Expected %d, founded %d", 5, last)
+	if current == nil {
+		t.Errorf("Expected to found element")
+		return
+	}
+
+	if current.value != "test" {
+		t.Errorf("Expected %s, founded %s", "test", current.value)
 	}
 }
 
-func TestElementAtOnEmpty(t *testing.T) {
-	tempList := []int{}
+func TestElementAt(t *testing.T) {
+	element := Element{value: "test", next: &Element{value: "test2", next: &Element{value: "test3"}}}
 
-	last, correct := elementAt(tempList, 3)
+	current := element.ElementAt(2)
 
-	if last != 0 || correct != false {
-		t.Errorf("Expected found incorrect status")
+	if current == nil {
+		t.Errorf("Expected to found element")
+		return
+	}
+
+	if current.value != "test3" {
+		t.Errorf("Expected %s, founded %s", "test3", current.value)
 	}
 }

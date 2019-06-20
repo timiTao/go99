@@ -8,7 +8,7 @@ type Element struct {
 }
 
 func (e *Element) HasNext() bool {
-	return e.next != nil;
+	return e.next != nil
 }
 
 func (e *Element) Last() (*Element, bool) {

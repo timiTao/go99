@@ -8,12 +8,12 @@ type Element struct {
 }
 
 func (e *Element) HasNext() bool {
-	return e.next != nil;
+	return e.next != nil
 }
 
 func (e *Element) IsLastButOne() bool {
 	if e.HasNext() == false {
-		return false;
+		return false
 	}
 
 	return e.next.HasNext() == false

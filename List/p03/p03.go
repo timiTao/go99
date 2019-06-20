@@ -1,15 +1,20 @@
 package p03
 
 /* p03. Find the K'th element of a list. */
-func elementAt(myList []int, key int) (int, bool) {
-	if key <= 0 {
-		return 0, false
-	}
-	if key >= len(myList) {
-		return 0, false
+
+type Element struct {
+	next  *Element
+	value string
+}
+
+func (e *Element) HasNext() bool {
+	return e.next != nil
+}
+
+func (e *Element) ElementAt(key int) *Element {
+	if !e.HasNext() || key == 0 {
+		return e
 	}
 
-	val := myList[key-1]
-
-	return val, true
+	return e.next.ElementAt(key - 1)
 }
