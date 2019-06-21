@@ -1,4 +1,6 @@
-package p04
+package list
+
+/* P04 (*) Find the number of elements of a list. */
 
 import "testing"
 

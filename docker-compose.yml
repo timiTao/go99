@@ -12,6 +12,6 @@ services:
     build: .
     volumes:
       - ${PWD}/logs:/app/logs
-      - ${PWD}/List:/go/src/app
+      - ${PWD}/list:/go/src/app
     command: ["run.sh"]
 

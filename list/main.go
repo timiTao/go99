@@ -1,6 +1,4 @@
-package p02
-
-/* P02 (*) Find the last but one element of a list. */
+package list
 
 type Element struct {
 	next  *Element
@@ -9,6 +7,14 @@ type Element struct {
 
 func (e *Element) HasNext() bool {
 	return e.next != nil
+}
+
+func (e *Element) Last() (*Element, bool) {
+
+	if e.HasNext() {
+		return e.next.Last()
+	}
+	return e, true
 }
 
 func (e *Element) IsLastButOne() bool {
@@ -29,4 +35,19 @@ func (e *Element) LastButOne() (*Element, bool) {
 	}
 
 	return e.next.LastButOne()
+}
+
+func (e *Element) ElementAt(key int) *Element {
+	if !e.HasNext() || key == 0 {
+		return e
+	}
+
+	return e.next.ElementAt(key - 1)
+}
+
+func (e *Element) Length() int {
+	if e.HasNext() {
+		return e.next.Length() + 1
+	}
+	return 1
 }

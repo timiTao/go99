@@ -1,4 +1,6 @@
-package p01
+package list
+
+/* P01 (*) Find the last element of a list. */
 
 import "testing"
 

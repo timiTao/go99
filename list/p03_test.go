@@ -1,4 +1,6 @@
-package p03
+package list
+
+/* P03 (*) Find the K'th element of a list. */
 
 import "testing"
 

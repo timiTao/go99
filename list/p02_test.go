@@ -1,6 +1,10 @@
-package p02
+package list
 
-import "testing"
+/* P02 (*) Find the last but one element of a list. */
+
+import (
+	"testing"
+)
 
 func TestLastButOneEmpty(t *testing.T) {
 	element := Element{value: "test"}
