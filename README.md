@@ -20,7 +20,7 @@ This is my first attempt with [GO](https://golang.org/).
 |Binary Trees|0/16|
 |Multiway Trees|0/4|
 |Graphs|0/10|
-|[Miscellaneous Problems](/Miscellaneous Problems/README.md)|0/10|
+|[Miscellaneous Problems](/miscellaneous/README.md)|0/10|
 
 ### Sources
 
