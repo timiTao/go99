@@ -14,13 +14,13 @@ This is my first attempt with [GO](https://golang.org/).
 
 |Section|Result|
 |---|---|
-|[Working with lists](/list/README.md)|4/28|
-|[Arithmetic](/arithmetic/README.md)|2/11|
+|[Working with lists](/list)|4/28|
+|[Arithmetic](/arithmetic)|2/11|
 |Logic and Codes|0/5|
 |Binary Trees|0/16|
 |Multiway Trees|0/4|
 |Graphs|0/10|
-|[Miscellaneous Problems](/miscellaneous/README.md)|1?/10|
+|[Miscellaneous Problems](/miscellaneous)|1?/10|
 
 ### Sources
 
