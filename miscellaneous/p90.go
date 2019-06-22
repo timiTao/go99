@@ -4,26 +4,24 @@ import "math"
 
 func IsCorrectEightQueensProblemSolution(solution [8]int) bool {
 	for i := 0; i < 8; i++ {
-		if queensCollision(solution, solution[i]) {
+		if checkQueenCollision(solution, i) {
 			return false
 		}
 	}
 	return true
 }
 
-func queensCollision(solution [8]int, key int) bool {
-	for i := 0; i < 8; i++ {
-		if i == key {
-			continue
-		}
-		valueI := solution[i]
-		valueKey := solution[key]
-
-		modValue, _ := math.Modf(float64(valueI) - float64(valueKey))
-		modKey, _ := math.Modf(float64(i) - float64(key))
-		if modValue == modKey {
-			return false
+func checkQueenCollision(solution [8]int, checkedKey int) bool {
+	for i := 7; i > checkedKey; i-- {
+		if checkCorrespondingQueens(solution, checkedKey, i) {
+			return true
 		}
 	}
-	return true
+	return false
+}
+
+func checkCorrespondingQueens(solution [8]int, keyA int, keyB int) bool {
+	modValue, _ := math.Modf(float64(solution[keyA]) - float64(solution[keyB]))
+	modKey, _ := math.Modf(float64(keyA) - float64(keyB))
+	return modValue == modKey
 }
