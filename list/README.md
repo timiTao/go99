@@ -8,3 +8,4 @@ Test for solutions:
 * P02. [Find the last but one element of a list.](/list/p02_test.go#L3)
 * P03. [Find the K'th element of a list.](/list/p03_test.go#L3)
 * P04. [Find the number of elements of a list.](/list/p04_test.go#L3)
+* P05. [Reverse a list.](/list/p05_test.go#L3)

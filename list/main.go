@@ -51,3 +51,11 @@ func (e *Element) Length() int {
 	}
 	return 1
 }
+
+func (e *Element) Reverse() {
+	if e.next.next != nil {
+		e.next.Reverse()
+	}
+	e.next.next = e
+	e.next = nil
+}
