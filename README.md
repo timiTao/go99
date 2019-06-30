@@ -17,7 +17,7 @@ This is my first attempt with [GO](https://golang.org/).
 |[Working with lists](/list)|6/28|
 |[Arithmetic](/arithmetic)|2/11|
 |Logic and Codes|0/5|
-|[Binary Trees](/binarytree)|0/16|
+|[Binary Trees](/binarytree)|1/16|
 |Multiway Trees|0/4|
 |Graphs|0/10|
 |[Miscellaneous Problems](/miscellaneous)|1?/10|
