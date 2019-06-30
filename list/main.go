@@ -84,3 +84,7 @@ func (e *Element) reversePrint() string {
 func (e *Element) IsPalindrome() bool {
 	return e.print() == e.reversePrint()
 }
+
+func (e *Element) flatten()  {
+
+}
