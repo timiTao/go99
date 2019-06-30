@@ -59,3 +59,28 @@ func (e *Element) Reverse() {
 	e.next.next = e
 	e.next = nil
 }
+
+func (e *Element) isMirrorPosition(pos int) bool {
+	if pos > e.Length() {
+		return false
+	}
+	return e.ElementAt(e.Length() - 1 - pos).value == e.value
+}
+
+func (e *Element) print() string {
+	if e.next != nil {
+		return e.value + "," + e.next.print()
+	}
+	return e.value
+}
+
+func (e *Element) reversePrint() string {
+	if e.next != nil {
+		return e.next.reversePrint() + "," + e.value
+	}
+	return e.value
+}
+
+func (e *Element) IsPalindrome() bool {
+	return e.print() == e.reversePrint()
+}
