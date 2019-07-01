@@ -6,9 +6,9 @@
 [coverage-image]: https://coveralls.io/repos/github/timiTao/go99/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/timiTao/go99?branch=master
 
-### [S-99: Ninety-Nine Prolog Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
+### [Ninety-Nine Prolog Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
 
-This is my first attempt with [GO](https://golang.org/).
+This is my first attempt with [GO](https://golang.org/). Wanted to try out on 99 Prolog Problems.
 
 ### Task
 
