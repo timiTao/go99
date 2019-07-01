@@ -50,6 +50,7 @@ func (n *Node) print() string {
 	return n.value
 }
 
+/* P55. Construct completely balanced binary trees */
 func (n *Node) isBalanced() bool {
 	if n.hasLeft() && !n.hasRight() {
 		return n.left.countNodes() <= 1
@@ -116,3 +117,7 @@ func buildBalancedTree(countNodes int) []*Node {
 
 	return list
 }
+
+/* P56. Symmetric binary trees */
+
+
