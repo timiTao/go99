@@ -1,3 +1,7 @@
+## [01-07-2019]
+
+* [Concatenate two slices in Go](https://stackoverflow.com/questions/16248241/concatenate-two-slices-in-go)
+
 ## [30-06-2019]
 
 * [Uday Hiwarale, Structures in Go (structs)](https://medium.com/rungo/structures-in-go-76377cc106a2) 
