@@ -116,3 +116,38 @@ func buildBalancedTree(countNodes int) []*Node {
 
 	return list
 }
+
+/* P61. Count the leaves of a binary tree */
+
+func (n *Node) countLeafs() int {
+	if n.hasLeft() && !n.hasRight() {
+		return n.left.countLeafs()
+	}
+
+	if !n.hasLeft() && n.hasRight() {
+		return n.right.countLeafs()
+	}
+
+	if n.hasLeft() && n.hasRight() {
+		return n.left.countLeafs() + n.right.countLeafs()
+	}
+
+	return 1
+}
+
+/* P61A. Collect the leaves of a binary tree in a list */
+func (n *Node) listLeafs() []*Node {
+	if n.hasLeft() && !n.hasRight() {
+		return n.left.listLeafs()
+	}
+
+	if !n.hasLeft() && n.hasRight() {
+		return n.right.listLeafs()
+	}
+
+	if n.hasLeft() && n.hasRight() {
+		return append(n.left.listLeafs(), n.right.listLeafs()...)
+	}
+
+	return []*Node{n}
+}

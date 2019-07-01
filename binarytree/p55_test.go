@@ -6,7 +6,11 @@ import (
 )
 
 func TestIsBalanced(t *testing.T) {
-	node := Node{value: "y", right: &Node{value: "x"}, left: &Node{value: "x1", right: &Node{value: "x2"}}}
+	node := Node{
+		value: "y",
+		right: &Node{value: "x"},
+		left:  &Node{value: "x1", right: &Node{value: "x2"}},
+	}
 
 	if node.isBalanced() != true {
 		t.Error("This tree is should be balanced")

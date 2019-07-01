@@ -23,3 +23,17 @@ T = t(x, t(x, nil, nil), t(x, nil, t(x, nil, nil))) ;
 T = t(x, t(x, nil, nil), t(x, t(x, nil, nil), nil)) ;
 etc......No
 ```
+
+* P61. [Count the leaves of a binary tree](/binarytree/main.go) / [test](/binarytree/p61_test.go#L3)
+```
+A leaf is a node with no successors. Write a predicate count_leaves/2 to count them. 
+
+% count_leaves(T,N) :- the binary tree T has N leaves
+```
+
+* P61A [Collect the leaves of a binary tree in a list](/binarytree/main.go) / [test](/binarytree/p61a_test.go#L3)
+```
+A leaf is a node with no successors. Write a predicate leaves/2 to collect them in a list. 
+
+% leaves(T,S) :- S is the list of all leaves of the binary tree T
+```
