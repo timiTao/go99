@@ -151,3 +151,20 @@ func (n *Node) listLeafs() []*Node {
 
 	return []*Node{n}
 }
+
+/* P62. Collect the internal nodes of a binary tree in a list */
+func (n *Node) listInternalsNodes() []*Node {
+	if n.hasLeft() && !n.hasRight() {
+		return append([]*Node{n}, n.left.listInternalsNodes()...)
+	}
+
+	if !n.hasLeft() && n.hasRight() {
+		return append([]*Node{n}, n.right.listInternalsNodes()...)
+	}
+
+	if n.hasLeft() && n.hasRight() {
+		return append([]*Node{n}, append(n.left.listInternalsNodes(), n.right.listInternalsNodes()...)...)
+	}
+
+	return []*Node{}
+}
