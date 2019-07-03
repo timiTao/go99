@@ -1,3 +1,7 @@
+## [03-07-2019]
+
+* [Why can't an interface type be a receiver](https://grokbase.com/t/gg/golang-nuts/1522thp49e/go-nuts-why-cant-an-interface-type-be-a-receiver)
+
 ## [01-07-2019]
 
 * [Concatenate two slices in Go](https://stackoverflow.com/questions/16248241/concatenate-two-slices-in-go)
