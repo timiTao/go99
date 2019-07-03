@@ -2,23 +2,34 @@ package binarytree
 
 import "fmt"
 
-type Node struct {
-	value string
-	right *Node
-	left  *Node
+type Node interface {
+	hasRight() bool
+	getRight() *Node
+	hasLeft() bool
+	getLeft() *Node
+	getValue() interface{}
 }
 
-func (n *Node) hasRight() bool {
+type NodeInstance struct {
+	value string
+	right *NodeInstance
+	left  *NodeInstance
+}
+
+func (n *NodeInstance) hasRight() bool {
 	return n.right != nil
 }
-func (n *Node) hasLeft() bool {
+func (n *NodeInstance) getRight() *NodeInstance {
+	return n.right
+}
+func (n *NodeInstance) hasLeft() bool {
 	return n.left != nil
 }
-func (n *Node) clone() *Node {
-	return &Node{n.value, n.right.clone(), n.left.clone()}
+func (n *NodeInstance) getLeft() *NodeInstance {
+	return n.left
 }
 
-func (n *Node) countNodes() int {
+func (n NodeInstance) countNodes() int {
 	if n.hasLeft() && !n.hasRight() {
 		return n.left.countNodes() + 1
 	}
@@ -34,7 +45,7 @@ func (n *Node) countNodes() int {
 	return 1
 }
 
-func (n *Node) print() string {
+func (n NodeInstance) print() string {
 	if n.hasLeft() && !n.hasRight() {
 		return fmt.Sprintf("%s[%s, nil]", n.value, n.left.print())
 	}
@@ -50,7 +61,7 @@ func (n *Node) print() string {
 	return n.value
 }
 
-func (n *Node) isBalanced() bool {
+func (n *NodeInstance) isBalanced() bool {
 	if n.hasLeft() && !n.hasRight() {
 		return n.left.countNodes() <= 1
 	}
@@ -67,13 +78,13 @@ func (n *Node) isBalanced() bool {
 	return true
 }
 
-func buildTreeVariations(countNodes int) []*Node {
-	list := []*Node{}
+func buildTreeVariations(countNodes int) []*NodeInstance {
+	var list []*NodeInstance
 	if countNodes <= 0 {
 		return list
 	}
 	if countNodes == 1 {
-		return append(list, &Node{value: "x"})
+		return append(list, &NodeInstance{value: "x"})
 	}
 
 	for i := 0; i < countNodes; i++ {
@@ -83,20 +94,20 @@ func buildTreeVariations(countNodes int) []*Node {
 		if len(leftOptions) != 0 {
 			for x := 0; x < len(leftOptions); x++ {
 				for y := 0; y < len(rightOptions); y++ {
-					list = append(list, &Node{value: "x", left: leftOptions[x], right: rightOptions[y]})
-					list = append(list, &Node{value: "x", right: rightOptions[y]})
+					list = append(list, &NodeInstance{value: "x", left: leftOptions[x], right: rightOptions[y]})
+					list = append(list, &NodeInstance{value: "x", right: rightOptions[y]})
 				}
 
-				list = append(list, &Node{value: "x", left: leftOptions[x]})
+				list = append(list, &NodeInstance{value: "x", left: leftOptions[x]})
 			}
 		} else {
 			for y := 0; y < len(rightOptions); y++ {
-				list = append(list, &Node{value: "x", right: rightOptions[y]})
+				list = append(list, &NodeInstance{value: "x", right: rightOptions[y]})
 			}
 		}
 	}
 
-	list2 := []*Node{}
+	list2 := []*NodeInstance{}
 	for _, x := range list {
 		if x.countNodes() == countNodes {
 			list2 = append(list2, x)
@@ -106,8 +117,8 @@ func buildTreeVariations(countNodes int) []*Node {
 	return list2
 }
 
-func buildBalancedTree(countNodes int) []*Node {
-	list := []*Node{}
+func buildBalancedTree(countNodes int) []*NodeInstance {
+	list := []*NodeInstance{}
 	for _, x := range buildTreeVariations(countNodes) {
 		if x.isBalanced() {
 			list = append(list, x)
@@ -119,7 +130,7 @@ func buildBalancedTree(countNodes int) []*Node {
 
 /* P61. Count the leaves of a binary tree */
 
-func (n *Node) countLeafs() int {
+func (n *NodeInstance) countLeafs() int {
 	if n.hasLeft() && !n.hasRight() {
 		return n.left.countLeafs()
 	}
@@ -136,7 +147,7 @@ func (n *Node) countLeafs() int {
 }
 
 /* P61A. Collect the leaves of a binary tree in a list */
-func (n *Node) listLeafs() []*Node {
+func (n *NodeInstance) listLeafs() []*NodeInstance {
 	if n.hasLeft() && !n.hasRight() {
 		return n.left.listLeafs()
 	}
@@ -149,22 +160,22 @@ func (n *Node) listLeafs() []*Node {
 		return append(n.left.listLeafs(), n.right.listLeafs()...)
 	}
 
-	return []*Node{n}
+	return []*NodeInstance{n}
 }
 
 /* P62. Collect the internal nodes of a binary tree in a list */
-func (n *Node) listInternalsNodes() []*Node {
+func (n *NodeInstance) listInternalsNodes() []*NodeInstance {
 	if n.hasLeft() && !n.hasRight() {
-		return append([]*Node{n}, n.left.listInternalsNodes()...)
+		return append([]*NodeInstance{n}, n.left.listInternalsNodes()...)
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return append([]*Node{n}, n.right.listInternalsNodes()...)
+		return append([]*NodeInstance{n}, n.right.listInternalsNodes()...)
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return append([]*Node{n}, append(n.left.listInternalsNodes(), n.right.listInternalsNodes()...)...)
+		return append([]*NodeInstance{n}, append(n.left.listInternalsNodes(), n.right.listInternalsNodes()...)...)
 	}
 
-	return []*Node{}
+	return []*NodeInstance{}
 }

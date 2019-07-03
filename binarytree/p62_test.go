@@ -3,10 +3,10 @@ package binarytree
 import "testing"
 
 func TestListInternalsNodes(t *testing.T) {
-	node := Node{
+	node := NodeInstance{
 		value: "y",
-		right: &Node{value: "x"},
-		left:  &Node{value: "x1", right: &Node{value: "x2", right: &Node{value: "x3"}}},
+		right: &NodeInstance{value: "x"},
+		left:  &NodeInstance{value: "x1", right: &NodeInstance{value: "x2", right: &NodeInstance{value: "x3"}}},
 	}
 
 	if len(node.listInternalsNodes()) != 3 {

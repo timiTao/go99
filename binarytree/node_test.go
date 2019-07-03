@@ -3,7 +3,7 @@ package binarytree
 import "testing"
 
 func TestCountOne(t *testing.T) {
-	node := Node{value: "x"}
+	node := NodeInstance{value: "x"}
 
 	if node.countNodes() != 1 {
 		t.Errorf("Invalid count. Expected: 1. Current: %d", node.countNodes())
@@ -11,7 +11,7 @@ func TestCountOne(t *testing.T) {
 }
 
 func TestCountTree(t *testing.T) {
-	node := Node{value: "x", right: &Node{value: "y"}, left: &Node{value: "z", left: &Node{value: "w"}}}
+	node := NodeInstance{value: "x", right: &NodeInstance{value: "y"}, left: &NodeInstance{value: "z", left: &NodeInstance{value: "w"}}}
 
 	if node.countNodes() != 4 {
 		t.Errorf("Invalid count. Expected: 4. Current: %d", node.countNodes())
