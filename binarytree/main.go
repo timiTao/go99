@@ -4,92 +4,95 @@ import "fmt"
 
 type Node interface {
 	hasRight() bool
-	getRight() *Node
+	getRight() Node
 	hasLeft() bool
-	getLeft() *Node
+	getLeft() Node
 	getValue() interface{}
 }
 
 type NodeInstance struct {
 	value string
-	right *NodeInstance
-	left  *NodeInstance
+	right Node
+	left  Node
 }
 
 func (n *NodeInstance) hasRight() bool {
 	return n.right != nil
 }
-func (n *NodeInstance) getRight() *NodeInstance {
+func (n *NodeInstance) getRight() Node {
 	return n.right
 }
 func (n *NodeInstance) hasLeft() bool {
 	return n.left != nil
 }
-func (n *NodeInstance) getLeft() *NodeInstance {
+func (n *NodeInstance) getLeft() Node {
 	return n.left
 }
+func (n *NodeInstance) getValue() interface{} {
+	return n.value
+}
 
-func (n NodeInstance) countNodes() int {
+func countNodes(n Node) int {
 	if n.hasLeft() && !n.hasRight() {
-		return n.left.countNodes() + 1
+		return countNodes(n.getLeft()) + 1
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return n.right.countNodes() + 1
+		return countNodes(n.getRight()) + 1
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return n.left.countNodes() + n.right.countNodes() + 1
+		return countNodes(n.getLeft()) + countNodes(n.getRight()) + 1
 	}
 
 	return 1
 }
 
-func (n NodeInstance) print() string {
+func print(n Node) string {
 	if n.hasLeft() && !n.hasRight() {
-		return fmt.Sprintf("%s[%s, nil]", n.value, n.left.print())
+		return fmt.Sprintf("%s[%s, nil]", n.getValue(), print(n.getLeft()))
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return fmt.Sprintf("%s[nil, %s]", n.value, n.right.print())
+		return fmt.Sprintf("%s[nil, %s]", n.getValue(), print(n.getRight()))
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return fmt.Sprintf("%s[%s, %s]", n.value, n.left.print(), n.right.print())
+		return fmt.Sprintf("%s[%s, %s]", n.getValue(), print(n.getLeft()), print(n.getRight()))
 	}
 
-	return n.value
+	return n.getValue().(string)
 }
 
-func (n *NodeInstance) isBalanced() bool {
+func isBalanced(n Node) bool {
 	if n.hasLeft() && !n.hasRight() {
-		return n.left.countNodes() <= 1
+		return countNodes(n.getLeft()) <= 1
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return n.right.countNodes() <= 1
+		return countNodes(n.getRight()) <= 1
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		diff := n.left.countNodes() - n.right.countNodes()
+		diff := countNodes(n.getLeft()) - countNodes(n.getRight())
 		return diff >= -1 && diff <= 1
 	}
 
 	return true
 }
 
-func buildTreeVariations(countNodes int) []*NodeInstance {
-	var list []*NodeInstance
-	if countNodes <= 0 {
+func buildTreeVariations(howManyNodes int) []Node {
+	var list []Node
+	if howManyNodes <= 0 {
 		return list
 	}
-	if countNodes == 1 {
+	if howManyNodes == 1 {
 		return append(list, &NodeInstance{value: "x"})
 	}
 
-	for i := 0; i < countNodes; i++ {
+	for i := 0; i < howManyNodes; i++ {
 		leftOptions := buildTreeVariations(i)
-		rightOptions := buildTreeVariations(countNodes - 1 - i)
+		rightOptions := buildTreeVariations(howManyNodes - 1 - i)
 
 		if len(leftOptions) != 0 {
 			for x := 0; x < len(leftOptions); x++ {
@@ -107,9 +110,9 @@ func buildTreeVariations(countNodes int) []*NodeInstance {
 		}
 	}
 
-	list2 := []*NodeInstance{}
+	var list2 []Node
 	for _, x := range list {
-		if x.countNodes() == countNodes {
+		if countNodes(x) == howManyNodes {
 			list2 = append(list2, x)
 		}
 	}
@@ -117,10 +120,10 @@ func buildTreeVariations(countNodes int) []*NodeInstance {
 	return list2
 }
 
-func buildBalancedTree(countNodes int) []*NodeInstance {
-	list := []*NodeInstance{}
+func buildBalancedTree(countNodes int) []Node {
+	var list []Node
 	for _, x := range buildTreeVariations(countNodes) {
-		if x.isBalanced() {
+		if isBalanced(x) {
 			list = append(list, x)
 		}
 	}
@@ -129,53 +132,52 @@ func buildBalancedTree(countNodes int) []*NodeInstance {
 }
 
 /* P61. Count the leaves of a binary tree */
-
-func (n *NodeInstance) countLeafs() int {
+func countLeafs(n Node) int {
 	if n.hasLeft() && !n.hasRight() {
-		return n.left.countLeafs()
+		return countLeafs(n.getLeft())
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return n.right.countLeafs()
+		return countLeafs(n.getRight())
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return n.left.countLeafs() + n.right.countLeafs()
+		return countLeafs(n.getLeft()) + countLeafs(n.getRight())
 	}
 
 	return 1
 }
 
 /* P61A. Collect the leaves of a binary tree in a list */
-func (n *NodeInstance) listLeafs() []*NodeInstance {
+func listLeafs(n Node) []Node {
 	if n.hasLeft() && !n.hasRight() {
-		return n.left.listLeafs()
+		return listLeafs(n.getLeft())
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return n.right.listLeafs()
+		return listLeafs(n.getRight())
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return append(n.left.listLeafs(), n.right.listLeafs()...)
+		return append(listLeafs(n.getLeft()), listLeafs(n.getRight())...)
 	}
 
-	return []*NodeInstance{n}
+	return []Node{n}
 }
 
 /* P62. Collect the internal nodes of a binary tree in a list */
-func (n *NodeInstance) listInternalsNodes() []*NodeInstance {
+func listInternalsNodes(n Node) []Node {
 	if n.hasLeft() && !n.hasRight() {
-		return append([]*NodeInstance{n}, n.left.listInternalsNodes()...)
+		return append([]Node{n}, listInternalsNodes(n.getLeft())...)
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return append([]*NodeInstance{n}, n.right.listInternalsNodes()...)
+		return append([]Node{n}, listInternalsNodes(n.getRight())...)
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return append([]*NodeInstance{n}, append(n.left.listInternalsNodes(), n.right.listInternalsNodes()...)...)
+		return append([]Node{n}, append(listInternalsNodes(n.getLeft()), listInternalsNodes(n.getRight())...)...)
 	}
 
-	return []*NodeInstance{}
+	return []Node{}
 }

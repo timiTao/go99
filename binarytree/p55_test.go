@@ -6,21 +6,21 @@ import (
 )
 
 func TestIsBalanced(t *testing.T) {
-	node := NodeInstance{
+	node := &NodeInstance{
 		value: "y",
 		right: &NodeInstance{value: "x"},
 		left:  &NodeInstance{value: "x1", right: &NodeInstance{value: "x2"}},
 	}
 
-	if node.isBalanced() != true {
+	if isBalanced(node) != true {
 		t.Error("This tree is should be balanced")
 	}
 }
 
 func TestIsNotBalanced(t *testing.T) {
-	node := NodeInstance{value: "y", left: &NodeInstance{value: "x1", right: &NodeInstance{value: "x2"}}}
+	node := &NodeInstance{value: "y", left: &NodeInstance{value: "x1", right: &NodeInstance{value: "x2"}}}
 
-	if node.isBalanced() != false {
+	if isBalanced(node) != false {
 		t.Error("This tree is should be not balanced")
 	}
 }
@@ -51,7 +51,7 @@ func TestTreeBuildTreeVariations(t *testing.T) {
 	if len(list) != 5 {
 		var list2 []string
 		for _, x := range list {
-			list2 = append(list2, x.print())
+			list2 = append(list2, print(x))
 		}
 		t.Errorf("Expected to find 5 solutions. Current: %d. Trees: %s", len(list), strings.Join(list2, "; "))
 	}
@@ -62,7 +62,7 @@ func TestBuildBalancedTree(t *testing.T) {
 	if len(list) != 4 {
 		var list2 []string
 		for _, x := range list {
-			list2 = append(list2, x.print())
+			list2 = append(list2, print(x))
 		}
 		t.Errorf("Expected to find 4 solutions. Current: %d. Trees: %s", len(list), strings.Join(list2, "; "))
 	}
