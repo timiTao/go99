@@ -1,5 +1,7 @@
 ## [03-07-2019]
 
+* [Uday Hiwarale, Interfaces in Go](https://medium.com/rungo/interfaces-in-go-ab1601159b3a)
+* [Michał Łowicki, Interfaces in Go p. III](https://medium.com/golangspec/interfaces-in-go-part-iii-61f5e7c52fb5)
 * [Why can't an interface type be a receiver](https://grokbase.com/t/gg/golang-nuts/1522thp49e/go-nuts-why-cant-an-interface-type-be-a-receiver)
 
 ## [01-07-2019]
