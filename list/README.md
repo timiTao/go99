@@ -10,3 +10,4 @@ Test for solutions:
 * P04. [Find the number of elements of a list.](/list/p04_test.go#L3)
 * P05. [Reverse a list.](/list/p05_test.go#L3)
 * P06. [Find out whether a list is a palindrome.](/list/p06_test.go#L3)
+* P07. [Flatten a nested list structure.](/list/p07_test.go#L3)

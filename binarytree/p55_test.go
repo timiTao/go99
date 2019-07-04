@@ -51,7 +51,7 @@ func TestTreeBuildTreeVariations(t *testing.T) {
 	if len(list) != 5 {
 		var list2 []string
 		for _, x := range list {
-			list2 = append(list2, print(x))
+			list2 = append(list2, printTree(x))
 		}
 		t.Errorf("Expected to find 5 solutions. Current: %d. Trees: %s", len(list), strings.Join(list2, "; "))
 	}
@@ -62,7 +62,7 @@ func TestBuildBalancedTree(t *testing.T) {
 	if len(list) != 4 {
 		var list2 []string
 		for _, x := range list {
-			list2 = append(list2, print(x))
+			list2 = append(list2, printTree(x))
 		}
 		t.Errorf("Expected to find 4 solutions. Current: %d. Trees: %s", len(list), strings.Join(list2, "; "))
 	}

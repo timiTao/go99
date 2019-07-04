@@ -7,7 +7,7 @@ func Test(t *testing.T) {
 	element := Element{value: "test", next: &Element{value: "test2", next: test}}
 	element.Reverse()
 
-	lastElement, _ := test.Last()
+	lastElement := test.Last()
 
 	if lastElement.value != "test" {
 		t.Errorf("Expected %s elements. Current: %s", test.value, lastElement.value)

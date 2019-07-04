@@ -48,17 +48,17 @@ func countNodes(n Node) int {
 	return 1
 }
 
-func print(n Node) string {
+func printTree(n Node) string {
 	if n.hasLeft() && !n.hasRight() {
-		return fmt.Sprintf("%s[%s, nil]", n.getValue(), print(n.getLeft()))
+		return fmt.Sprintf("%s[%s, nil]", n.getValue(), printTree(n.getLeft()))
 	}
 
 	if !n.hasLeft() && n.hasRight() {
-		return fmt.Sprintf("%s[nil, %s]", n.getValue(), print(n.getRight()))
+		return fmt.Sprintf("%s[nil, %s]", n.getValue(), printTree(n.getRight()))
 	}
 
 	if n.hasLeft() && n.hasRight() {
-		return fmt.Sprintf("%s[%s, %s]", n.getValue(), print(n.getLeft()), print(n.getRight()))
+		return fmt.Sprintf("%s[%s, %s]", n.getValue(), printTree(n.getLeft()), printTree(n.getRight()))
 	}
 
 	return n.getValue().(string)
@@ -177,6 +177,26 @@ func listInternalsNodes(n Node) []Node {
 
 	if n.hasLeft() && n.hasRight() {
 		return append([]Node{n}, append(listInternalsNodes(n.getLeft()), listInternalsNodes(n.getRight())...)...)
+	}
+
+	return []Node{}
+}
+
+/* P62B. Collect the nodes at a given level in a list */
+func listInternalsNodesAtLevel(n Node, level int) []Node {
+	if level == 1 {
+		return []Node{n}
+	}
+	if n.hasLeft() && !n.hasRight() {
+		return listInternalsNodesAtLevel(n.getLeft(), level-1)
+	}
+
+	if !n.hasLeft() && n.hasRight() {
+		return listInternalsNodesAtLevel(n.getRight(), level-1)
+	}
+
+	if n.hasLeft() && n.hasRight() {
+		return append(listInternalsNodesAtLevel(n.getLeft(), level-1), listInternalsNodesAtLevel(n.getRight(), level-1)...)
 	}
 
 	return []Node{}
