@@ -33,7 +33,7 @@ In meantime, a see a lot of articles/presentations. To store them in one place a
 
 ## Author
 
-* Tomasz Kunicki [TimiTao](http://github.com/timiTao) [developer]
+* Tomasz Kunicki [TimiTao](http://github.com/timiTao) [developer] / [blog](https://timitao.postach.io/post/til-blog-is-hard-practice-is-easier)
 
 ### Extra
 
