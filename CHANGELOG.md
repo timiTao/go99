@@ -1,3 +1,8 @@
+## [13-07-2019]
+
+* [print array in tests](https://stackoverflow.com/questions/24489384/golang-how-to-print-the-values-of-arrays)
+* [pass function as parameter](https://stackoverflow.com/questions/12655464/can-functions-be-passed-as-parameters-in-go)
+
 ## [03-07-2019]
 
 * [Uday Hiwarale, Interfaces in Go](https://medium.com/rungo/interfaces-in-go-ab1601159b3a)
