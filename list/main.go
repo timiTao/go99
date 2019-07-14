@@ -9,6 +9,11 @@ func (e *Element) HasNext() bool {
 	return e.next != nil
 }
 
+func (e *Element) append(newValue string) *Element {
+	e.next = &Element{value: newValue}
+	return e.next
+}
+
 /* P01. Find the last element of a list. */
 func (e *Element) Last() *Element {
 
@@ -125,4 +130,16 @@ func flatten(e *Element) *Element {
 		return head
 	}
 	panic("No expected return")
+}
+
+/* P08. Eliminate consecutive duplicates of list elements. */
+func eliminateDuplication(e *Element) *Element {
+	if e.HasNext() {
+		if e.value != e.next.value {
+			return &Element{value: e.value, next: eliminateDuplication(e.next)}
+		} else {
+			return eliminateDuplication(e.next)
+		}
+	}
+	return &Element{value: e.value}
 }
