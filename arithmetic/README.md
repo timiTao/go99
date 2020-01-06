@@ -20,3 +20,12 @@ Phi = 4
 
 Find out what the value of phi(m) is if m is a prime number. Euler's totient function plays an important role in one of the most widely used public key cryptography methods (RSA). In this exercise you should use the most primitive method to calculate this function (there are smarter ways that we shall discuss later).
 ```
+
+* P35. [Determine the prime factors of a given positive integer.](/arithmetic/p35.go#L3)
+
+```
+Construct a flat list containing the prime factors in ascending order.
+Example:
+?- prime_factors(315, L).
+L = [3,3,5,7]
+```p34_test.go
