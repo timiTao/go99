@@ -74,7 +74,7 @@ func (e *Element) isMirrorPosition(pos int) bool {
 	if pos > e.Length() {
 		return false
 	}
-	return e.ElementAt(e.Length() - 1 - pos).value == e.value.(string)
+	return e.ElementAt(e.Length()-1-pos).value == e.value.(string)
 }
 
 /* P06. Find out whether a list is a palindrome. */
@@ -142,4 +142,27 @@ func eliminateDuplication(e *Element) *Element {
 		}
 	}
 	return &Element{value: e.value}
+}
+
+/* P09. Pack consecutive duplicates of list elements into sublists */
+func transformDuplicatesIntoSublists(list []string) [][]string {
+	var output = [][]string{}
+	if len(list) == 0 {
+		return output
+	}
+
+	var currentValue = list[0]
+	var currentSublist = []string{}
+
+	for _, v := range list {
+		if v == currentValue {
+			currentSublist = append(currentSublist, v)
+		} else {
+			output = append(output, currentSublist)
+			currentSublist = []string{v}
+			currentValue = v
+		}
+	}
+
+	return append(output, currentSublist)
 }
