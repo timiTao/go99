@@ -14,7 +14,7 @@ This is my first attempt with [GO](https://golang.org/). Wanted to try out on 99
 
 |Section|Result|
 |---|---|
-|[Working with lists](/list)|9/28|
+|[Working with lists](/list)|10/28|
 |[Arithmetic](/arithmetic)|5/11|
 |[Logic and Codes](/logic)|1/5|
 |[Binary Trees](/binarytree)|3/16|

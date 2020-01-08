@@ -1,5 +1,9 @@
 package list
 
+import (
+	"strconv"
+)
+
 type Element struct {
 	next  *Element
 	value interface{}
@@ -165,4 +169,16 @@ func transformDuplicatesIntoSublists(list []string) [][]string {
 	}
 
 	return append(output, currentSublist)
+}
+
+/* P10. Run-length encoding of a list */
+func runLengthEncoding(list []string) [][]string {
+	var sublists = transformDuplicatesIntoSublists(list)
+
+	var output = [][]string{}
+	for _, v := range sublists {
+		output = append(output, []string{strconv.Itoa(len(v)), v[0]})
+	}
+
+	return output
 }
